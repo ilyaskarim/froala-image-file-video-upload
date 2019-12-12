@@ -19,20 +19,42 @@
   </div>
       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/froala_editor.pkgd.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/image.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/video.min.js" ></script>
+  
 
       <script>
           new FroalaEditor('div#froala-editor', {
-            toolbarButtons: ['insertImage','insertFile'],
+            // Set the video upload parameter.
+            videoUploadParam: 'video',
+
+            // Set the video upload URL.
+            videoUploadURL: 'http://localhost:7000/upload/video',
+
+            // Additional upload params.
+            videoUploadParams: {id: 'my_editor'},
+
+            // Set request type.
+            videoUpload: true,
+            videoUploadMethod: 'POST',
+
+            // Set max video size to 200MB.
+            videoMaxSize: 200 * 1024 * 1024,
+
+            // Allow to upload MP4, WEBM and OGG
+            videoAllowedTypes: ['*'],
+
+            toolbarButtons: ['insertImage','insertFile',"insertVideo"],
 
             imageUploadParam: 'image',
 
             // Set the image upload URL.
-            fileUploadURL: 'http://localhost:7000/upload/image',
+            imageUploadURL: 'http://localhost:7000/upload/image',
 
             // Additional upload params.
             imageUploadParams: {id: 'my_editor'},
 
-            // Set request type.
+            // Set request type
             imageUploadMethod: 'POST',
 
             // Set max image size to 5MB.
